@@ -1,0 +1,62 @@
+{
+  "person": {
+    "name": "오범선 (BUMSUN OH)",
+    "title": "기술 리드 & 선임 소프트웨어 아키텍트"
+  },
+  "experiences": [
+    {
+      "id": "exp_01",
+      "organization": "버닝 갤럭시 네트워크 테크놀로지 (상하이)",
+      "role": "기술 디렉터",
+      "period": {
+        "start": "2022-08",
+        "end": "2024-06"
+      }
+    },
+    {
+      "id": "exp_02",
+      "organization": "팀 배틀 네트워크 (상하이)",
+      "role": "서버 아키텍처 리드",
+      "period": {
+        "start": "2019-05",
+        "end": "2022-08"
+      }
+    },
+    {
+      "id": "exp_03",
+      "organization": "LINE (서울)",
+      "role": "책임",
+      "period": {
+        "start": "2013-08",
+        "end": "2018-07"
+      }
+    },
+    {
+      "id": "exp_04",
+      "organization": "더나인 (상하이)",
+      "role": "Software Engineer",
+      "period": {
+        "start": "2010-11",
+        "end": "2013-07"
+      }
+    },
+    {
+      "id": "exp_05",
+      "organization": "웹젠 차이나",
+      "role": "Software Engineer",
+      "period": {
+        "start": "2007-01",
+        "end": "2008-05"
+      }
+    },
+    {
+      "id": "exp_06",
+      "organization": "정우 커뮤니케이션",
+      "role": "Software Engineer",
+      "period": {
+        "start": "2001-02",
+        "end": "2006-12"
+      }
+    }
+  ]
+}

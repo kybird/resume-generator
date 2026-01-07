@@ -1,0 +1,31 @@
+ROLE: Data Extractor
+INPUT: Resume Text (Markdown/Text)
+
+TASK: Extract "Baseline Information" for a Career Statement Generator.
+This information will be FROZEN and used as the skeleton for interviews.
+Do NOT summarize project details. Only extract the metadata structure.
+
+OUTPUT SCHAMA (JSON):
+{
+    "person": {
+        "name": "Extract from top of resume or 'Unknown'",
+        "title": "Current or most recent job title"
+    },
+    "experiences": [
+        {
+            "id": "exp_01", // Sequential IDs: exp_01, exp_02...
+            "organization": "Company Name",
+            "role": "Job Title",
+            "period": {
+                "start": "YYYY-MM",
+                "end": "YYYY-MM" // or "Present"
+            }
+        }
+    ]
+}
+
+RULES:
+1. "experiences" should list main career items (Companies/Roles). Not individual small projects unless they are freelance.
+2. Sort by date descending (newest first).
+3. If date is "Current" or "Present", use "Present".
+4. Return ONLY raw JSON. No markdown fencing if possible, or minimally ```json.

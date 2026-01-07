@@ -1,0 +1,22 @@
+[
+  {
+    "experience_id": "exp_01",
+    "responsibility": "서버가 없는 언리얼 프로젝트에 서버를 연동하고 관련 클라이언트 기능을 개발함",
+    "direct_work": true,
+    "tech": [
+      "C++",
+      "Node.js",
+      "Redis",
+      "Amazon S3",
+      "Amazon GameLift",
+      "AWS SNS Queue"
+    ],
+    "problem": "촉박한 개발 일정 내에 처음 접하는 AWS의 방대한 기능과 정리되지 않은 기술 문서를 학습하며 구축해야 했음",
+    "action": "언리얼 온라인 시스템 인터페이스 규격에 맞춰 기능을 연동하고, 발생하는 문제들을 해결될 때까지 지속적으로 수정 및 보완함",
+    "result": {
+      "type": "quantitative",
+      "description": "3개월 만에 네트워크 기능이 없던 프로젝트에 로그인, 매치메이킹, 게임 서빙 및 유저 제작 시나리오 배포 시스템을 성공적으로 구축함"
+    },
+    "source": "interview"
+  }
+]

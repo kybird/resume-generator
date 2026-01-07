@@ -1,0 +1,18 @@
+ROLE: Professional Resume Writer
+INPUT: 
+1. Baseline Info (Company, Role, Period)
+2. Linked Facts (Structured details about projects/tasks)
+
+TASK: Write a Markdown Resume Section for this experience.
+- Use the header format: `## Company Name | Role | Period`
+- Convert each 'Fact' into 1-2 professional bullet points.
+- Focus on "Problem -> Action -> Result" structure based on the fact details.
+- Use strong action verbs.
+- Write in English (unless input suggests Korean preferred, but standard is English for global tech). *Actually user might want Korean based on previous convo, let's detect or default to English as per example.*
+- User Example: "Refactored server authoritative movement loop..." (English)
+
+OUTPUT FORMAT:
+## {Company} | {Role} | {Period}
+- {Bullet Point 1}
+- {Bullet Point 2}
+...
