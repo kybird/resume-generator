@@ -6,8 +6,11 @@ import os
 class Generator:
     def __init__(self, llm: LLMProvider):
         self.llm = llm
-        self.store = StoreManager("career_writer/data")
-        self.prompts_dir = "career_writer/prompts"
+        # Use absolute paths to avoid issues when running from different CWDs
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        self.store = StoreManager(os.path.join(base_dir, "data"))
+        self.prompts_dir = os.path.join(base_dir, "prompts")
+        self.output_dir = os.path.join(os.path.dirname(base_dir), "output")
 
     def generate_resume(self) -> str:
         """
@@ -15,7 +18,7 @@ class Generator:
         """
         baseline = self.store.load_baseline()
         if not baseline:
-            return "Error: No baseline found."
+            return f"[v2.1] Error: No baseline found at {self.store.baseline_path}"
             
         full_markdown = f"# {baseline.person.name}\n**{baseline.person.title}**\n\n---\n"
         
@@ -26,9 +29,9 @@ class Generator:
             full_markdown += section + "\n\n"
             
         # Save output
-        out_path = "output/v2_resume.md"
-        if not os.path.exists("output"):
-            os.makedirs("output")
+        out_path = os.path.join(self.output_dir, "v2_resume.md")
+        if not os.path.exists(self.output_dir):
+            os.makedirs(self.output_dir)
             
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(full_markdown)

@@ -17,7 +17,11 @@ from career_writer.generator import Generator
 
 # Initialize Server
 mcp = FastMCP("Career Data Server (v2)")
-store = StoreManager("career_writer/data")
+# Determine the absolute data path
+base_dir = os.path.dirname(os.path.abspath(__file__))
+data_path = os.path.join(base_dir, "career_writer", "data")
+print(f"Server Initialized. Data Path: {data_path}")
+store = StoreManager(data_path)
 
 # === Baseline Tools (Metadata) ===
 
@@ -94,6 +98,24 @@ def add_linked_fact(
 # === Generator ===
 
 @mcp.tool
+def debug_system_info() -> Dict:
+    """
+    Returns internal path and environment info for debugging.
+    """
+    import career_writer
+    import career_writer.generator
+    return {
+        "cwd": os.getcwd(),
+        "sys_path": sys.path,
+        "career_writer_path": career_writer.__file__,
+        "generator_path": career_writer.generator.__file__,
+        "base_dir": base_dir,
+        "data_path": data_path,
+        "baseline_exists": os.path.exists(os.path.join(data_path, "baseline.json")),
+        "env_vars": {k: "SET" if v else "NOT SET" for k, v in os.environ.items() if "API_KEY" in k or "LLM" in k}
+    }
+
+@mcp.tool
 def generate_resume_v2() -> str:
     """
     Triggers the v2 Generator to merge Baseline + Facts into a final Resume Markdown.
@@ -117,7 +139,7 @@ def generate_resume_v2() -> str:
         return gen.generate_resume()
         
     except Exception as e:
-        return f"Error generating resume: {e}"
+        return f"[v2.1] Error generating resume (Exception): {e}"
 
 if __name__ == "__main__":
     mcp.run()

@@ -15,8 +15,12 @@ class Interviewer:
     def start(self):
         print("\n" + "="*50)
         print(" FACTS GATHERING INTERVIEW (v2)")
-        print(" Strict Fact Mode: No dates, No title questions.")
+        print(" Dynamic Mode: Driven by Resume & References context.")
         print("="*50 + "\n")
+        
+        # 0. Load Context (Resume + References)
+        loader = DataLoader(self.store.data_dir)
+        input_data = loader.load_all()
         
         # 1. Select Experience
         exp = self._select_experience()
@@ -24,37 +28,87 @@ class Interviewer:
             return
 
         print(f"\n[Selected] {exp.organization} / {exp.role}")
-        print("Please answer the following 6 questions to detail this experience.\n")
+        print("The AI interviewer will now ask questions based on your resume and industry references.\n")
 
-        # 2. Question Loop
-        answers = {}
-        
-        # Q1
-        answers['q1'] = self._ask("1. Core Task: What was the single task you spent the most time on?", "e.g. Refactoring the server loop")
-        
-        # Q2
-        answers['q2'] = self._ask("2. Directness: Did you implement this directly? (Yes/No/Partial)", "e.g. Yes, I wrote the core logic")
-        
-        # Q3
-        answers['q3'] = self._ask("3. Problem Context: What was the problem/situation that led to this?", "e.g. The legacy code was causing 50ms latency")
-        
-        # Q4
-        answers['q4'] = self._ask("4. Structure/Action: How did you change the structure or logic?", "e.g. Separated input processing from state updates")
-        
-        # Q5
-        answers['q5'] = self._ask("5. Tech Stack: List the technologies used.", "e.g. C++, Python, Redis")
-        
-        # Q6
-        answers['q6'] = self._ask("6. Result: What changed compared to before? (Qualitative/Quantitative)", "e.g. Latency dropped to 10ms")
+        # 2. Dynamic Interview Loop
+        history = []
+        extracted_fact = Fact(
+            experience_id=exp.id,
+            responsibility="",
+            problem="",
+            action="",
+            tech=[],
+            result={"type": "none", "description": ""}
+        )
 
-        # 3. Process & Save
-        print("\n[Processing] Structuring your answers...")
-        fact = self._parse_answers_to_fact(exp.id, answers)
-        if fact:
-            self.store.add_fact(fact)
+        prompt_path = "career_writer/prompts/interview_fact.txt"
+        with open(prompt_path, "r", encoding="utf-8") as f:
+            system_template = f.read()
+
+        while True:
+            # Prepare status for prompt
+            problem_status = extracted_fact.problem or "missing"
+            action_status = extracted_fact.action or "missing"
+            tech_status = ", ".join(extracted_fact.tech) if extracted_fact.tech else "missing"
+            result_status = f"{extracted_fact.result.description} ({extracted_fact.result.type})" if extracted_fact.result.description else "missing"
+
+            # Build Full System Instruction
+            system_instruction = system_template.format(
+                company=exp.organization,
+                role=exp.role,
+                period=f"{exp.period.start} ~ {exp.period.end}",
+                resume_context=input_data.resume_text,
+                reference_context="\n".join([f"{k}: {v[:300]}..." for k, v in input_data.references.items()]), # Truncate references to avoid context overflow
+                problem_status=problem_status,
+                action_status=action_status,
+                tech_status=tech_status,
+                result_status=result_status,
+                history="\n".join(history[-10:]) # last 10 turns
+            )
+
+            # Generate Next Question
+            user_input = "Please provide the next question." if not history else history[-1]
+            response = self.llm.generate(user_input, context={"system_instruction": system_instruction})
+            
+            data = extract_json_from_text(response)
+            if not data:
+                print("\n[Error] Failed to parse AI response.")
+                break
+
+            # Update Extracted Data
+            if "extracted_data" in data:
+                ext = data["extracted_data"]
+                if ext.get("responsibility"): extracted_fact.responsibility = ext["responsibility"]
+                if ext.get("problem"): extracted_fact.problem = ext["problem"]
+                if ext.get("action"): extracted_fact.action = ext["action"]
+                if ext.get("tech"): extracted_fact.tech = list(set(extracted_fact.tech + ext["tech"]))
+                if ext.get("result"):
+                    res = ext["result"]
+                    if isinstance(res, dict):
+                        extracted_fact.result.type = res.get("type", extracted_fact.result.type)
+                        extracted_fact.result.description = res.get("description", extracted_fact.result.description)
+
+            question = data.get("question", "DONE")
+            if question.upper() == "DONE":
+                print("\n[Complete] All necessary information gathered.")
+                break
+
+            # Ask User
+            print(f"\nAI: {question}")
+            ans = input("Answer: ").strip()
+            if not ans:
+                print("Conversation ended by user.")
+                break
+            
+            history.append(f"AI: {question}")
+            history.append(f"User: {ans}")
+
+        # 3. Save
+        if extracted_fact.responsibility or extracted_fact.problem:
+            self.store.add_fact(extracted_fact)
             print(f"\n[Success] Fact saved for {exp.organization}!")
         else:
-            print("\n[Error] Failed to process answers.")
+            print("\n[Error] No meaningful data extracted.")
 
     def _select_experience(self) -> Experience:
         print("Select an experience to elaborate on:")
@@ -66,7 +120,7 @@ class Interviewer:
             try:
                 choice = input("\nEnter number (or 'q' to quit): ").strip()
                 if choice.lower() == 'q':
-                    sys.exit(0)
+                    return None
                 idx = int(choice) - 1
                 if 0 <= idx < len(exps):
                     return exps[idx]
@@ -75,36 +129,9 @@ class Interviewer:
                 print("Invalid input.")
 
     def _ask(self, question: str, hint: str = "") -> str:
-        print(f"\n{question}")
-        if hint:
-            print(f" > Hint: {hint}")
-        while True:
-            ans = input("Answer: ").strip()
-            if ans:
-                return ans
-            print("Please enter an answer.")
+        # Deprecated in dynamic mode
+        pass
 
     def _parse_answers_to_fact(self, exp_id: str, answers: Dict[str, str]) -> Fact:
-        prompt_path = "career_writer/prompts/v2_fact_parser.txt"
-        with open(prompt_path, "r", encoding="utf-8") as f:
-            system_instruction = f.read()
-
-        user_content = f"""
-        Experience ID: {exp_id}
-        Q1 (Task): {answers['q1']}
-        Q2 (Directness): {answers['q2']}
-        Q3 (Problem): {answers['q3']}
-        Q4 (Action): {answers['q4']}
-        Q5 (Tech): {answers['q5']}
-        Q6 (Result): {answers['q6']}
-        """
-        
-        context = {"system_instruction": system_instruction}
-        response = self.llm.generate(user_content, context=context)
-        
-        data = extract_json_from_text(response)
-        if not data:
-            return None
-            
-        data['experience_id'] = exp_id
-        return Fact.from_dict(data)
+        # Deprecated in dynamic mode
+        pass

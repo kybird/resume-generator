@@ -16,7 +16,7 @@
 
 2.  **의존성 패키지 설치**:
     ```bash
-    pip install python-dotenv openai groq google-generativeai requests
+    pip install python-dotenv openai groq google-generativeai requests fastmcp
     ```
 
 3.  **환경 설정**:
@@ -95,3 +95,24 @@ career_writer/
 **실행 방법**:
 1.  `run.bat` 실행 후 **2. Run MCP Server** 선택
 2.  또는 직접 실행: `fastmcp run mcp_server.py`
+
+### 🔗 Claude Desktop 등 에이전트 연결 설정
+
+Claude Desktop 앱의 설정 파일(`config.json`)에 아래 내용을 추가하면, Claude가 직접 이 프로젝트의 도구들을 사용할 수 있습니다.
+
+**설정 파일 경로**: 
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+**추가할 JSON**:
+```json
+{
+  "mcpServers": {
+    "resume-ai": {
+      "command": "python",
+      "args": ["C:\\path\\to\\your\\resume-ai\\mcp_server.py"]
+    }
+  }
+}
+```
+> **Note**: `C:\\path\\to\\your\\resume-ai` 부분은 실제 프로젝트가 설치된 절대 경로로 변경해주세요. Python 가상환경을 사용 중이라면 `python` 대신 가상환경의 python 실행 파일 경로(예: `.venv\\Scripts\\python.exe`)를 입력해야 합니다.

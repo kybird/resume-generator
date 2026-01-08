@@ -48,11 +48,13 @@ class DataLoader:
         if not os.path.exists(ref_dir):
             return refs
         
-        # Load .txt and .md files
-        patterns = ["*.txt", "*.md"]
+        # Load .txt, .md, and .json files
+        patterns = ["*.txt", "*.md", "*.json"]
         files = []
         for pattern in patterns:
             files.extend(glob.glob(os.path.join(ref_dir, pattern)))
+            
+        print(f"[INFO] Found {len(files)} reference files.")
             
         for filepath in files:
             filename = os.path.basename(filepath)

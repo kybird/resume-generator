@@ -18,5 +18,297 @@
       "description": "3개월 만에 네트워크 기능이 없던 프로젝트에 로그인, 매치메이킹, 게임 서빙 및 유저 제작 시나리오 배포 시스템을 성공적으로 구축함"
     },
     "source": "interview"
+  },
+  {
+    "experience_id": "exp_03",
+    "responsibility": "라인플레이(SNS) 내 3-Matching 퍼즐 '후루츠몬스터' 개발 리드 및 애니메이션 엔진 확장",
+    "direct_work": true,
+    "tech": [
+      "C++",
+      "Cocos2d-x",
+      "DragonBones (Open Source)",
+      "Adobe Flash",
+      "SCUT Server Engine (C#)"
+    ],
+    "problem": "사장님의 까다로운 컨폼 기준과 급변하는 시장 트렌드에 대응하기 위해 극단적인 개발 속도와 고퀄리티 그래픽 연출이 동시에 요구됨",
+    "action": "DragonBones 오픈소스를 직접 수정(Transform 로직 등)하여 디자인-개발 워크플로우를 완전히 분리하고, C# 기반 SCUT 엔진을 도입하여 프로토타입 제작 속도를 극대화함",
+    "result": {
+      "type": "qualitative",
+      "description": "3개월 만에 런칭 성공 및 이후 1년간 유지보수/신기능 추가. 디자이너가 직접 인게임 연출을 제어하는 효율적인 협업 구조 정착"
+    },
+    "source": "interview"
+  },
+  {
+    "experience_id": "exp_03",
+    "responsibility": "라인플레이 실시간 공간 공유 및 아바타 동기화 시스템 구축",
+    "direct_work": true,
+    "tech": [
+      "C++",
+      "Cocos2d-x",
+      "Protocol Buffers",
+      "Socket Programming"
+    ],
+    "problem": "웹 서비스 기반의 라인플레이에 실시간 인터랙션 기능을 도입하기 위해 저지연 패킷 처리와 대규모 아바타 레이어(최대 128개) 동기화 시스템이 필요했음",
+    "action": "기존 웹 기반 SNS 서비스 구조에 실시간 동기화 레이어(룸 초대, 아바타 이동 등)를 추가하기 위해 고효율 ProtoBuf 직렬화 시스템 및 C++ 소켓 통신 모듈 설계/구현",
+    "result": {
+      "type": "qualitative",
+      "description": "실시간 공간 공유 및 동기화 기능을 성공적으로 안착시켜 유저 간 인터랙션 강화 및 모바일 최적화 통신 구현. 서버-클라이언트 전체 메커니즘에 대한 깊은 이해 확보."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_03",
+    "responsibility": "C# 기반 고속 서버 프로토타입 시스템 구축 및 SCUT 엔진 도입 리딩",
+    "direct_work": true,
+    "tech": [
+      "C#",
+      "SCUT Server Engine",
+      "Redis",
+      "Rapid Prototyping"
+    ],
+    "problem": "경영진의 컨폼 프로세스가 길어지고 시장 트렌드와의 간극이 발생하는 상황에서, 무거운 C++ 개발 방식 대신 기동력이 뛰어난 C# 기반 SCUT 엔진을 선제적으로 도입함",
+    "action": "Redis를 캐시 레이어로 활용하는 SCUT 특유의 아키텍처를 활용하여 복잡한 인벤토리/아바타 로직을 빠르게 구현하고, 유니티 클라이언트와의 코드 공유를 통해 개발 생산성 극대화",
+    "result": {
+      "type": "qualitative",
+      "description": "새로운 기획案에 대해 수일 내 플레이 가능한 프로토타입 딜리버리 환경 구축. 비즈니스 상황에 최적화된 기술 스택 선정 리더십 입증."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "NFC 하드웨어 연동 게임 및 모바일 네이티브 레이어 개발 리딩",
+    "direct_work": true,
+    "tech": [
+      "Android JNI",
+      "Objective-C",
+      "NFC Driver",
+      "Hardware Interfacing"
+    ],
+    "problem": "2년 분량의 개발 일정을 6개월로 단축해야 하는 극한의 상황에서 하드웨어(NFC 완구)와 모바일 게임 간의 복잡한 통신 인터페이스를 구현해야 했음",
+    "action": "Android JNI와 iOS Objective-C 네이티브 레이어 개발을 통해 NFC 드라이버를 직접 제어하고, 완구-게임 간 실시간 데이터 연동 시스템 완수",
+    "result": {
+      "type": "none",
+      "description": "6개월 만에 기술적 구현 완수. 다만 출시 후 보안 미비로 인한 해킹 이슈를 겪으며 '안정성과 보안이 담보된 서버 아키텍처'에 대한 확고한 철학을 세우는 계기가 됨."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "서버 아키텍처 리드로서 신규 서버 프레임워크 설계 및 핵심 플러그인(Hot-reloading, Kafka, Matching) 개발",
+    "direct_work": true,
+    "tech": [
+      "Node.js (Vanilla JS)",
+      "PM2",
+      "Kafka",
+      "Redis (Distributed Lock)",
+      "Hot-reloading",
+      "Matching Server"
+    ],
+    "problem": "기존 서버 코드가 파편화되어 유지보수가 불가능한 상황에서, 100만 CCU급 대규모 트래픽을 견디면서도 누구나 이해할 수 있는 심플한 구조의 차세대 서버 엔진이 필요했음",
+    "action": "Node.js 기반의 분산 게임 서버 프레임워크를 바닐라 JS로 제로베이스에서 설계 및 구축하고, PM2 기반의 멀티 프로세싱 아키텍처 적용",
+    "result": {
+      "type": "qualitative",
+      "description": "가독성과 단순성을 최우선으로 한 프레임워크 구축으로 팀 내 개발 생산성 극대화. 핫로딩 플러그인을 통한 무중단 서비스 기반 마련 및 Kafka 기반의 안정적인 메시지 처리 시스템 완수."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "전사 공통 서버 프레임워크 설계 및 매칭 시스템용 Kafka 파이프라인 개발",
+    "direct_work": true,
+    "tech": [
+      "Kafka",
+      "Node.js",
+      "Redis (Shared Data)",
+      "Distributed Architecture",
+      "Matching Algorithm"
+    ],
+    "problem": "다수의 로비 서버에서 발생하는 동시다발적인 매칭 요청을 유실 없이 매칭 서버로 전달하고, 실력 점수와 인원(3:3)에 맞게 정밀하게 처리할 수 있는 원자적(Atomic) 통신 인프라가 부재했음",
+    "action": "Redis Pub/Sub의 데이터 유실 리스크를 차단하기 위해 Kafka 기반의 고신뢰성 서버 간 메시징 시스템 설계 및 분산 매칭 파이프라인 구축",
+    "result": {
+      "type": "qualitative",
+      "description": "Redis의 한계를 극복하고 대규모 매칭 요청을 안정적으로 처리하는 분산 메시징 레이어 완수. 스포츠 게임 특화 매칭 엔진의 핵심 통신 기반으로 활용됨."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "분산 메시징 아키텍처 최적화 및 매칭 순서 정합성 이슈 해결",
+    "direct_work": true,
+    "tech": [
+      "Kafka Partitioning",
+      "Message Ordering",
+      "Batch Processing",
+      "Distributed System Design"
+    ],
+    "problem": "매칭 속도를 위해 다중 파티션을 사용했으나, 파티션 간 순서 동기화 미지원으로 인해 유저 매칭 순서가 뒤바뀌는 공정성 이슈 발생함",
+    "action": "Kafka 파티션 구조에 따른 메시지 순서 보장 이슈를 해결하기 위해 큐의 성격(Ordered vs Unordered)을 이원화하고, 싱글 파티션 기반의 벌크 매칭 처리 로직 구현",
+    "result": {
+      "type": "qualitative",
+      "description": "글로벌 FIFO(First-In-First-Out) 순서를 보장해야 하는 매칭 로직의 무결성을 확보함. 단일 파티션의 병목은 인터벌 기반 벌크 처리 방식으로 최적화하여 서비스 성능 유지."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "우선순위 기반 매칭 알고리즘 설계 및 대규모 시뮬레이션 기반 품질 검증 리딩",
+    "direct_work": true,
+    "tech": [
+      "Redis Sorted Set (ZADD)",
+      "Kafka Messaging",
+      "Matchmaking Algorithm",
+      "Stress Testing (Bot Simulation)"
+    ],
+    "problem": "단순 선입선출(FIFO) 매칭만으로는 1/2/3인 파티 구성에 따른 공정성 확보와 레이팅 기반의 정밀한 매칭 품질을 보장하기 어려웠음",
+    "action": "Kafka와 Redis Sorted Set(ZADD)을 결합한 하이브리드 매칭 엔진 설계 및 다중 봇 부하 테스트를 통한 검증 수행",
+    "result": {
+      "type": "qualitative",
+      "description": "Redis ZADD를 활용하여 대기 시간과 파티 규모에 따른 우선순위 큐를 구현하고, 다수의 봇을 동원한 테스트 클라이언트로 시스템 매커니즘의 완벽한 동작 확인. 스포츠 게임에 최적화된 고도화된 매칭 아키텍처 완성."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "로그 서버 아키텍처 설계 및 Kafka 기반의 내결함성(Fault Tolerance) 시스템 검증",
+    "direct_work": true,
+    "tech": [
+      "Kafka Offset Management",
+      "Fault Tolerance Architecture",
+      "Log Server Design"
+    ],
+    "problem": "기존 통신 방식으로는 서버 장애 시 처리 중이던 데이터가 유실되는 문제가 있었으나, 대규모 서비스에서 로그 데이터의 무결성과 비동기 요청의 확실한 처리가 강력히 요구됨",
+    "action": "Kafka의 메시지 영속성(Persistence)과 Consumer Offset 관리 기능을 활용하여 서버 장애 시에도 데이터 유실 없는 안정적인 로그 수집 및 메시지 처리 시스템 구축",
+    "result": {
+      "type": "qualitative",
+      "description": "서버가 다운된 후 재가동될 때 미처리된 메시지를 자동으로 이어받아 처리하는 메커니즘을 확인 및 정착시킴으로써 시스템의 전체적인 신뢰도 대폭 향상"
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "실전형 서버 운영 도구 개발 및 글로벌 비즈니스 상황에 따른 리스크 매니지먼트 수행",
+    "direct_work": true,
+    "tech": [
+      "Kafka Operations",
+      "GM Tool Development",
+      "Risk Management",
+      "Cross-cultural Management"
+    ],
+    "problem": "분산 서버 운영 중 원인 불명의 Kafka Offset 오류로 매칭 시스템이 정지되는 리스크가 자주 발생했으나, 투자자 미팅 등 박박한 비즈니스 일정으로 인해 근본 원인 분석에만 매몰될 수 없는 상황이었음",
+    "action": "기술적 한계 상황(Offset 오류 등)에서 시스템 가용성을 유지하기 위해 GM 서버 내 Kafka 제어 도구(Offset Reset 등)를 구축하고, 중국 특유의 조직 문화와 비즈니스 일정에 맞춰 유연하게 대응함",
+    "result": {
+      "type": "qualitative",
+      "description": "완벽한 이론보다 실질적인 해법(운영 툴)을 통해 서비스 연속성을 확보하는 엔지니어링 실리주의 실천. 중국 문화 기반의 프로젝트 관리 메커니즘을 습득하여 협업 시너지 창출."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "서버 아키텍처 현대화 리딩 및 인메모리 기반 데이터 영속성 전략 수립",
+    "direct_work": true,
+    "tech": [
+      "Golang",
+      "Node.js (Migration)",
+      "Redis-only Architecture",
+      "In-memory DB Strategy"
+    ],
+    "problem": "대규모 동시 접속자(CBT/런칭 급)를 처리함에 있어 Node.js의 싱글 쓰레드 구조와 기존 DB의 I/O 병목이 시스템 안정성의 잠재적 위협으로 판단됨",
+    "action": "Node.js 싱글 쓰레드 성능 한계 돌파를 위한 Golang 기반 고성능 서버 포팅 및 RDBMS를 배제한 전면 인메모리(Redis-only) 데이터 아키텍처 설계",
+    "result": {
+      "type": "qualitative",
+      "description": "RDBMS 없이 Redis만으로 모든 유저 데이터를 처리하는 초고속 응답 시스템 구축. 이후 안정적인 동시성 처리를 위해 Golang으로 성공적 포팅을 주도하며 서버 성능의 비약적 향상 기반 마련."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_02",
+    "responsibility": "Golang 서버 포팅 주도 및 로비-인게임 서버 간 Redis 공유 레이어 아키텍처 설계",
+    "direct_work": true,
+    "tech": [
+      "Golang (Goroutine)",
+      "Node.js (Refactoring) Architecture",
+      "Redis Sharing Layer",
+      "Client-Server Hand-over Protocol"
+    ],
+    "problem": "Node.js 기반 분산 서버는 프로세스 간 통신(IPC) 및 자원 공유 로직이 복잡해지는 단점이 있었으며, 로비 서버와 인게임 서버 간의 대기 시간 없는 유연한 데이터 교환 메커니즘이 필요했음",
+    "action": "Node.js 서버의 멀티 프로세스 구조를 Golang의 Goroutine 기반 단일 아키텍처로 포팅하여 시스템 복잡도 대폭 감소 및 동시성 처리 성능 최적화 수행",
+    "result": {
+      "type": "qualitative",
+      "description": "Redis를 중앙 허브로 활용하는 'Push-Polling-Result' 방식의 데이터 브릿지를 설계하여 서버 군 간의 결합도를 낮추고 안정적인 게임 시퀀스 확보. Golang 전환을 통해 코드 관리 효율성 및 런타임 성능 혁신."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_01",
+    "responsibility": "기술 디렉터로서 로비 서버(Node.js) 구축 및 AWS GameLift-언리얼 DS 인프라 설계/운영 전담",
+    "direct_work": true,
+    "tech": [
+      "AWS GameLift",
+      "Unreal Dedicated Server (DS)",
+      "Node.js (Lobby Server)",
+      "Linux (Ubuntu/AL2) Troubleshooting",
+      "SSH Debugging"
+    ],
+    "problem": "중국의 폐쇄적인 네트워크 환경과 자금 고갈 위기 속에서, 최소한의 비용과 인력으로 FPS 멀티플레이 환경을 구축해야 했으며, 로컬 빌드와 AWS 전용 OS 간의 라이브러리 호환성 문제로 바이너리 실행조차 불가능한 상황이었음",
+    "action": "AWS 및 GameLift 경험이 전무한 상태에서 독학으로 언리얼 Dedicated Server(DS) 기반의 글로벌 서버 인프라를 독자 구축하고, 환경 매칭 문제를 해결하기 위해 GameLift 인스턴스 내 직접 빌드 등 극한의 트러블슈팅 수행",
+    "result": {
+      "type": "qualitative",
+      "description": "Node.js 로비-GameLift 서비스-언리얼 DS로 이어지는 전체 게임 서비스 파이프라인을 1인 체제로 완성. SSH를 통한 인스턴스 직접 접근 및 바이너리 호환성 해결을 통해 실제 구동 가능한 글로벌 매칭 서비스 환경 확보."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_01",
+    "responsibility": "UGC 데이터 파이프라인 설계 및 언리얼 엔진 내 스토리지/공유 인터페이스 구현 리딩",
+    "direct_work": true,
+    "tech": [
+      "Unreal Online Subsystem API",
+      "Amazon S3 (Cloud Storage)",
+      "UGC (User Generated Content) Architecture",
+      "C++ (Unreal Engine)"
+    ],
+    "problem": "사용자가 직접 커스터마이징한 게임 데이터를 영구 저장하고, 타 사용자가 이를 조회하여 플레이할 수 있는 공유 시스템이 부재하여 프로젝트의 핵심 컨셉(UGC 플랫폼) 실현이 어려운 상황이었음",
+    "action": "언리얼 Online Subsystem 인터페이스를 확장 개발하여 Amazon S3 기반의 유저 생성 시나리오(UGC) 업로드 및 타 유저 공유 시스템 구축",
+    "result": {
+      "type": "qualitative",
+      "description": "로블록스 모델과 유사한 시나리오 공유 생태계의 기술적 토대를 마련. AWS S3와 언리얼 엔진을 유기적으로 연동하여 대규모 유저 데이터의 안정적인 배포 및 동기화 구현."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_01",
+    "responsibility": "기술 디렉터로서의 리더십을 넘어, 실질적인 솔로 개발 체제로 프로젝트의 모든 기술 프레임워크 구축 전담",
+    "direct_work": true,
+    "tech": [
+      "Unreal Engine (UMG UI)",
+      "AWS Full-stack Usage",
+      "Self-taught Mastery",
+      "Solo Full-stack Development"
+    ],
+    "problem": "전문 인력이 전무한 환경에서 로컬 전용 프로젝트를 글로벌 멀티플레이 UGC 플랫폼으로 전환해야 했으며, UI 구성부터 서버 인프라까지 모든 기술 영역을 0부터 직접 해결해야 하는 극한의 R&D 상황이었음",
+    "action": "언리얼 엔진(UMG UI, Online System, DS) 및 AWS(GameLift, S3) 전반에 대한 무경험 상태에서 독학으로 전체 게임 서비스 파이프라인(Client-UI-Server-Infra)을 독자 구축 및 통합 수행",
+    "result": {
+      "type": "qualitative",
+      "description": "언리얼 엔진과 AWS 전문성을 단기간에 최고 수준으로 확보하여 실제 구동 가능한 멀티플레이어 환경(UI 포함) 완성. 기술적 공백을 1인 체제로 완벽히 메우며 프로젝트의 생존 및 연속성 증명."
+    },
+    "source": "mcp_agent"
+  },
+  {
+    "experience_id": "exp_01",
+    "responsibility": "기술 디렉터로서 최후의 인프라 관리 및 클라우드 비용 절감 전략 수립/실행",
+    "direct_work": true,
+    "tech": [
+      "AWS Cost Optimization (FinOps)",
+      "LocalStack (Cloud Emulation)",
+      "Infrastructure Management",
+      "Professional Integrity"
+    ],
+    "problem": "자금 고갈 상황임에도 불구하고 비효율적인 클라우드 의존성으로 인해 매월 막대한 AWS 유지비용이 발생하고 있었으며, 개발 환경 역시 클라우드 종속적이어서 비용과 효율성이 모두 악화된 상태였음",
+    "action": "조직 해체 및 재정 위기 상황에서 AWS 인프라 비용 최적화(FinOps) 단행 및 LocalStack 도입을 통한 개발 패러다임 전환 주도",
+    "result": {
+      "type": "qualitative",
+      "description": "LocalStack 도입으로 개발 환경을 로컬화하여 불필요한 클라우드 비용을 원천 차단하고, 방치된 AWS 리소스를 정리하여 회사의 소중한 잔여 자원을 보존함. 인원 감축의 최후 순간까지 유일하게 신뢰받는 인력으로서 프로젝트의 마지막 자산을 수호함."
+    },
+    "source": "mcp_agent"
   }
 ]
