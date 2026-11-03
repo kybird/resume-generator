@@ -42,3 +42,6 @@ career_writer/output/*
 
 # Logs
 *.log
+
+# Generated output
+output/
